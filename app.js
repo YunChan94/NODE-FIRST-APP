@@ -5,6 +5,9 @@ const path = require("path");
 
 const app = express();
 
+app.set("view engine", "pug"); // dùng pug engine vào
+app.set("views", "views");
+
 const admin = require("./routes/admin");
 const adminRoutes = admin.router;
 const shopRouters = require("./routes/shop");
@@ -21,6 +24,7 @@ app.use("/admin", adminRoutes); //path /admin/... chạy vào trong adminRouter
 app.use(shopRouters);
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  // res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.render("404");
 });
 app.listen(3000);

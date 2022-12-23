@@ -10,8 +10,12 @@ const router = express.Router();
 
 router.get("/", (req, res, next) => {
   // res.sendFile(path.join(__dirname, "../", "views", "shop.html")); // build correct path khi dùng ở hệ điều hành khác nhau
-  console.log(adminData.products);
-  res.sendFile(path.join(rootDir, "views", "shop.html"));
+  // console.log(adminData.products);
+  // res.sendFile(path.join(rootDir, "views", "shop.html"));
+
+  //🔴PUG
+  const products = adminData.products;
+  res.render("shop", { prods: products, docTitle: "Shop" });
 });
 
 module.exports = router;
