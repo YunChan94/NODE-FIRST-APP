@@ -1,21 +1,15 @@
-const path = require("path");
+const path = require('path');
 
-const express = require("express");
+const express = require('express');
 
-const rootDir = require("../util/path");
-
-const adminData = require("./admin");
+const rootDir = require('../util/path');
+const adminData = require('./admin');
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  // res.sendFile(path.join(__dirname, "../", "views", "shop.html")); // build correct path khi dùng ở hệ điều hành khác nhau
-  // console.log(adminData.products);
-  // res.sendFile(path.join(rootDir, "views", "shop.html"));
-
-  //🔴PUG
+router.get('/', (req, res, next) => {
   const products = adminData.products;
-  res.render("shop", { prods: products, pageTitle: "Shop", path: "/" });
+  res.render('shop', {prods: products, pageTitle: 'Shop', path: '/'});
 });
 
 module.exports = router;
