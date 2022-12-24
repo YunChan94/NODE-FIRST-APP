@@ -1,11 +1,16 @@
 // const routes = require("./routes"); // import file routes vao sever
-const bodyParser = require("body-parser");
 const express = require("express");
+const bodyParser = require("body-parser");
+const expressHbs = require("express-handlebars");
+
 const path = require("path");
 
 const app = express();
 
-app.set("view engine", "pug"); // dùng pug engine vào
+// initialize handlebars engine
+app.engine("hbs", expressHbs());
+app.set("view engine", "hbs");
+// app.set("view engine", "pug"); // dùng pug engine vào
 app.set("views", "views");
 
 const admin = require("./routes/admin");
